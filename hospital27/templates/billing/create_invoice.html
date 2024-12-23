@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h2>Create New Invoice</h2>
+
+    {% if error %}
+    <div class="alert alert-danger">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="patient">Select Patient</label>
+            <select name="patient" id="patient" class="form-control" required>
+                <option value="">Choose Patient</option>
+                {% for patient in patients %}
+                <option value="{{ patient.id }}">{{ patient.name }} (ID: {{ patient.id }})</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Select Services</label>
+            <div class="row">
+                {% for service in services %}
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ service.name }}</h5>
+                            <p class="card-text">
+                                <strong>Price:</strong> ${{ service.price|floatformat:2 }}<br>
+                                <strong>Category:</strong> {{ service.get_category_display }}
+                            </p>
+                            <div class="form-check">
+                                <input type="checkbox"
+                                       name="services"
+                                       value="{{ service.id }}"
+                                       id="service-{{ service.id }}"
+                                       class="form-check-input">
+                                <label class="form-check-label" for="service-{{ service.id }}">
+                                    Select Service
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Generate Invoice</button>
+    </form>
+</div>
+</body>
+</html>

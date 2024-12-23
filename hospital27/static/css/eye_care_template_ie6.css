@@ -1,0 +1,14 @@
+.slider a.next {
+	background-image:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='css/images/next.png', sizingMethod='crop');
+}
+.slider a.prev {
+	background-image:none;
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='css/images/prev.png', sizingMethod='crop');
+}
+.col-t {
+	height:260px;
+}
+.content {
+	height:65px;
+}

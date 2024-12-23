@@ -1,0 +1,88 @@
+.reg {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 400px;
+  margin: 0 auto;
+  background-color: [background color you prefer]; /* New line for background color */
+}
+
+.reg h1 {
+  text-align: center;
+}
+
+.reg label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.reg input[type="text"],
+.reg input[type="email"],
+.reg input[type="password"]
+.reg input[type="phone"],
+.reg input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.reg textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+
+.reg input[id="password"]{
+  width: 100%;
+  height: 30.5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+.reg input[id="phone"]{
+  width: 100%;
+  height: 30.5px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+}
+
+
+.reg select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.reg .login-button {
+  display: block;
+  margin-top: 10px;
+  text-align: center;
+}
+
+
+.reset {
+  font-size: 16px; /* Adjust font size as needed */
+  font-weight: 400;  /* Normal weight */
+  color: #fff;  /* White text */
+  padding: 10px 20px;  /* Adjust padding for your content */
+  background-color: #3498db;  /* Blue color, adjust as needed */
+  border: none;
+  border-radius: 5px;  /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth background transition */
+}
+
+.submit:hover{
+    background: rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 5px 7px 1px rgba(0, 0, 0, 0.2);
+}
+
+
+.reset:hover {
+  background-color: #2980b9;  /* Darker shade on hover */
+}

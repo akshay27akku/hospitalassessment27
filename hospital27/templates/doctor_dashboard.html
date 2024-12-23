@@ -1,0 +1,54 @@
+
+
+{% block content %}
+<div class="dashboard-container">
+
+
+    <h1>Welcome,  {{ doctor }}</h1>
+
+
+    
+    <div class="dashboard-stats">
+        <div class="stat-box">
+            <h3>Total Appointments</h3>
+            <p>{{ total_appointments }}</p>
+        </div>
+        <div class="stat-box">
+            <h3>Pending Appointments</h3>
+            <p>{{ pending_appointments }}</p>
+        </div>
+    </div>
+    
+    <div class="appointments-table">
+        <h2>Your Appointments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient Name</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.name }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.status }}</td>
+                    <td>
+                        <a href="{% url 'appointment_detail' appointment.id %}">View Details</a>
+                        <a href="{% url 'create_prescription' %}">Create New Prescription</a>
+                        <a href="{% url 'doctor_prescriptions' %}">Prescription</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="4">No appointments scheduled</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

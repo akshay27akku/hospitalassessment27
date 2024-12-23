@@ -1,0 +1,37 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{%  static 'apply_for_bed.css' %}">
+
+
+    <div class="bed-availability">
+        <h2 style="color:blue">Bed Availability</h2>
+        <div class="row">
+            <div class="col-sm-4">
+        <h2 style = "color:blue">Total Beds<br>
+            {{ total_beds }}</h2>
+
+        <h2 style="color:red">Available Beds<br> {{ available_beds }}</h2>
+                </div>
+
+    </div>
+    </div>
+
+
+    {% if message %}
+        <div class="message">
+            {{ message }}
+        </div>
+    {% endif %}
+
+
+    {% if available_beds > 0 %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Apply for Bed</button>
+        </form>
+
+    {% else %}
+        <p>Sorry, no beds are currently available.</p>
+    {% endif %}
+

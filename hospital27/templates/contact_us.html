@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>contact_us</title>
+    <style>
+        h1{
+        font-size:100px;
+        color:blue;
+        text-align:center;
+        margin-top:150px;
+        }
+
+        p{
+        font-size:25px;
+        color:red;
+        text-align:center;
+        margin-top:100px;
+        }
+
+        body{
+        background-color:lightblue;
+        }
+    </style>
+</head>
+<body>
+<h1>Contact Us</h1>
+<!--<p>Call us at:<a href="tel:7594091773"> 7594091773</a></p>-->
+
+{% if phone_number %}
+<p>Call u at: <a href="tel:7594091773">{{ phone_number }}</a></p>
+{% else %}
+<p> No contact available</p>
+{% endif %}
+</body>
+</html>

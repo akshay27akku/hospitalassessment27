@@ -1,0 +1,36 @@
+
+
+
+<div class="appointment-detail-container">
+    <h1>Appointment Details</h1>
+    
+    <div class="appointment-info">
+        <div class="info-row">
+            <strong>Patient Name:</strong>
+            <span>{{ appointment.name }}</span>
+        </div>
+        
+        <div class="info-row">
+            <strong>Appointment Date:</strong>
+            <span>{{ appointment.date }}</span>
+        </div>
+        
+        <div class="info-row">
+            <strong>Selected Doctor:</strong>
+            <span>{{ appointment.doctor }}</span>
+        </div>
+        
+        <div class="info-row">
+            <strong>Status:</strong>
+            <span>{{ appointment.get_status_display }}</span>
+        </div>
+        
+        {% if request.user.staff or request.user.doctor %}
+        <div class="actions">
+            <a href="{% url 'update_appointment_status' appointment.id %}" class="btn btn-primary">
+                Update Status
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</div>

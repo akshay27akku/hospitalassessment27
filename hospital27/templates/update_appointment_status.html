@@ -1,0 +1,68 @@
+
+
+{% block content %}
+<div class="container update-appointment-status">
+    <h1>Update Appointment Status</h1>
+    
+    <div class="card">
+        <div class="card-header">
+            Appointment Details
+        </div>
+        <div class="card-body">
+            <p><strong>Patient Name:</strong> {{ appointment.name }}</p>
+            <p><strong>Current Status:</strong> {{ appointment.get_status_display }}</p>
+            <p><strong>Appointment Date:</strong> {{ appointment.date }}</p>
+        </div>
+    </div>
+
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="status">Select New Status</label>
+            <select name="status" id="status" class="form-control" required>
+                {% for status_value, status_label in status_choices %}
+                    <option 
+                        value="{{ status_value }}" 
+                        {% if status_value == appointment.status %}selected{% endif %}
+                    >
+                        {{ status_label }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="notes">Additional Notes (Optional)</label>
+            <textarea 
+                name="notes" 
+                id="notes" 
+                class="form-control" 
+                rows="4" 
+                placeholder="Enter any additional notes about the status change"
+            ></textarea>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary">Update Status</button>
+            <a href="{% url 'appointment_detail' appointment.id %}" class="btn btn-secondary">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.querySelector('form');
+    const statusSelect = document.getElementById('status');
+    
+    form.addEventListener('submit', function(e) {
+        if (statusSelect.value === '{{ appointment.status }}') {
+            e.preventDefault();
+            alert('Please choose a different status.');
+        }
+    });
+});
+</script>
+{% endblock %}

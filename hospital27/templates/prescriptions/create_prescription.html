@@ -1,0 +1,74 @@
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Create New Prescription</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        <div class="card mb-3">
+            <div class="card-header">Prescription Details</div>
+            <div class="card-body">
+                <div class="form-group">
+                    {{ prescription_form.patient.label_tag }}
+                    {{ prescription_form.patient }}
+                </div>
+                <div class="form-group">
+                    {{ prescription_form.notes.label_tag }}
+                    {{ prescription_form.notes }}
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3">
+            <div class="card-header">Prescription Items</div>
+            <div class="card-body" id="prescription-items">
+                {{ prescription_item_formset.management_form }}
+                {% for form in prescription_item_formset %}
+                <div class="prescription-item mb-3 border p-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.disease.label_tag }}
+                                {{ form.disease }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                {{ form.medicine.label_tag }}
+                                {{ form.medicine }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.dosage.label_tag }}
+                                {{ form.dosage }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.frequency.label_tag }}
+                                {{ form.frequency }}
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                {{ form.duration.label_tag }}
+                                {{ form.duration }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form.instructions.label_tag }}
+                        {{ form.instructions }}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Prescription</button>
+    </form>
+</div>
+{% endblock %}

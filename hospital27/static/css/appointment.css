@@ -1,0 +1,77 @@
+
+/* General styles for the page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eaf7ff;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: start;
+    gap: 5px;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    width: 100%;
+}
+h1 {
+    text-align: center;
+    color: #003366; /* Dark blue text */
+    font-size: 30px;
+
+}
+/* Center the form and add styling */
+form {
+    background-color: lightblue; /* White background */
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+    width: 700px; /* Fixed width */
+
+}
+
+/* Heading styles */
+
+
+/* Label and input field styles */
+label {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 8px;
+    display: block;
+}
+
+input, select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Prevent overflow */
+    font-size: 14px;
+}
+
+/* Button styles */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF; /* Blue button color */
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Optional: Add focus effect for inputs */
+input:focus, select:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.5);
+}

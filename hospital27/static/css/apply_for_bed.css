@@ -1,0 +1,109 @@
+bed-availability {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading Styles */
+.bed-availability h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* Bed Count Paragraphs */
+.bed-availability p {
+    color: #34495e;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 4px;
+    border-left: 4px solid #3498db;
+}
+
+/* Message Styling */
+.message {
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #e7f3fe;
+    border-left: 4px solid #2196F3;
+    color: #2c3e50;
+}
+
+/* Form Styling */
+.bed-availability form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.bed-availability form p {
+    margin: 10px 0;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.bed-availability form label {
+    display: block;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.bed-availability form input,
+.bed-availability form select,
+.bed-availability form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button Styling */
+.bed-availability button {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.bed-availability button:hover {
+    background-color: #2980b9;
+}
+
+/* No Availability Message */
+.bed-availability p:last-child {
+    text-align: center;
+    color: #e74c3c;
+    font-weight: 600;
+    background-color: #fff0f0;
+    border-left: 4px solid #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .bed-availability {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .bed-availability form {
+        padding: 15px;
+    }
+}

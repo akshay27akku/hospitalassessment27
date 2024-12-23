@@ -1,0 +1,58 @@
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header">
+            <h2>Prescription Details</h2>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <strong>Patient:</strong> {{ prescription.patient.name }}
+                </div>
+                <div class="col-md-6">
+                    <strong>Doctor:</strong> {{ prescription.doctor.user.get_full_name }}
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <strong>Date Issued:</strong> {{ prescription.date_issued }}
+                </div>
+            </div>
+            
+            {% if prescription.notes %}
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <strong>Doctor's Notes:</strong>
+                    <p>{{ prescription.notes }}</p>
+                </div>
+            </div>
+            {% endif %}
+
+            <h3>Prescribed Medications</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Disease</th>
+                        <th>Medicine</th>
+                        <th>Dosage</th>
+                        <th>Frequency</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in prescription.items.all %}
+                    <tr>
+                        <td>{{ item.disease.name|default:"N/A" }}</td>
+                        <td>{{ item.medicine.name }}</td>
+                        <td>{{ item.dosage }}</td>
+                        <td>{{ item.frequency }}</td>
+                        <td>{{ item.duration }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

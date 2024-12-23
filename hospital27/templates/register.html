@@ -1,0 +1,14 @@
+<form method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="password" name="password" placeholder="Password" required>
+    <input type="text" name="first_name" placeholder="First Name" required>
+    <input type="text" name="last_name" placeholder="Last Name" required>
+    <select name="role" required>
+        <option value="doctor">Doctor</option>
+        <option value="staff">Staff</option>
+    </select>
+    <input type="text" name="additional_field" placeholder="Specialization/Department" required>
+    <input type="text" name="additional_field2" placeholder="Experience in words/Position" required>
+    <button type="submit">Register</button>
+</form>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h2>Add Payment for Invoice #{{ invoice.invoice_number }}</h2>
+        </div>
+        <div class="card-body">
+            <div class="invoice-summary">
+                <p><strong>Total Invoice Amount:</strong> ${{ invoice.total_amount|floatformat:2 }}</p>
+                <p><strong>Remaining Balance:</strong> ${{ remaining_balance|floatformat:2 }}</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="amount_paid">Payment Amount</label>
+                    <input type="number"
+                           name="amount_paid"
+                           id="amount_paid"
+                           class="form-control"
+                           step="0.01"
+                           max="{{ remaining_balance }}"
+                           required>
+                </div>
+
+                <div class="form-group">
+                    <label for="payment_method">Payment Method</label>
+                    <select name="payment_method" id="payment_method" class="form-control" required>
+                        <option value="">Select Payment Method</option>
+                        <option value="CASH">Cash</option>
+                        <option value="CREDIT_CARD">Credit Card</option>
+                        <option value="DEBIT_CARD">Debit Card</option>
+                        <option value="INSURANCE">Insurance</option>
+                        <option value="ONLINE">Online Payment</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="transaction_id">Transaction ID (Optional)</label>
+                    <input type="text"
+                           name="transaction_id"
+                           id="transaction_id"
+                           class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-primary">Submit Payment</button>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="container">
+    <h1>Billing Invoices</h1>
+
+    <div class="filter-section">
+        <form method="get" class="form-inline">
+            <select name="status" class="form-control mr-2">
+                <option value="">All Statuses</option>
+                <option value="PENDING">Pending</option>
+                <option value="PAID">Paid</option>
+                <option value="PARTIALLY_PAID">Partially Paid</option>
+                <option value="OVERDUE">Overdue</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Invoice Number</th>
+                <th>Patient</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.invoice_number }}</td>
+                <td>{{ invoice.patient.full_name }}</td>
+                <td>${{ invoice.total_amount|floatformat:2 }}</td>
+                <td>
+                    <span class="badge
+                        {% if invoice.payment_status == 'PAID' %}badge-success
+                        {% elif invoice.payment_status == 'PENDING' %}badge-warning
+                        {% elif invoice.payment_status == 'OVERDUE' %}badge-danger
+                        {% else %}badge-info{% endif %}">
+                        {{ invoice.get_payment_status_display }}
+                    </span>
+                </td>
+                <td>{{ invoice.due_date|date:"d M Y" }}</td>
+                <td>
+                    <a href="{% url 'invoice-detail' invoice.id %}" class="btn btn-sm btn-info">View</a>
+                    <a href="{% url 'add-payment' invoice.id %}" class="btn btn-sm btn-success">Pay</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="6" class="text-center">No invoices found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+            <li class="page-item {% if page_obj.number == num %}active{% endif %}">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+            </li>
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+
+
+
